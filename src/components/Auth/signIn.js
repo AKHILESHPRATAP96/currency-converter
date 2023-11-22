@@ -74,90 +74,100 @@ function SignInForm({ onSuccess }) {
   }
 
   return (
-    <div className="formBack">
-      <div className="heading">
-        <h1>currency</h1>
-        <h1>converter</h1>
-        <p>
-          Seamlessly Convert Currencies, Empowering Your Finances Across the
-          Globe.
-        </p>
+    <div className="formBack ">
+      <div className="row d-flex justify-content-center  align-items-center w-100 ">
+        <div className="col-md-8 rounded-3">
+          <div className="heading ">
+            <h1>currency</h1>
+
+            <h1>converter</h1>
+            <p>
+              Seamlessly Convert Currencies, Empowering Your Finances Across the
+              Globe.
+            </p>
+          </div>
+        </div>
+        {/* 88 */}
+        <div className="col-md-4 ">
+          <form className="formx ">
+            <div className="mb-3">
+              <h2>Sign In </h2>
+              <label htmlFor="email " className="form-label">
+                Email address
+              </label>
+              <div className="input-group mb-3 ">
+                <span className="input-group-text">
+                  <i className="bi bi-envelope"></i>
+                </span>
+                <input
+                  type="email"
+                  className={`form-control ${emailError ? "is-invalid" : ""}`}
+                  id="email"
+                  placeholder="Enter your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                {emailError && (
+                  <div className="invalid-feedback">{emailError}</div>
+                )}
+              </div>
+            </div>
+            <div className="mb-3">
+              <label htmlFor="password" className="form-label">
+                Password
+              </label>
+              <div className="input-group mb-3">
+                <span className="input-group-text">
+                  <i className="bi bi-person-lock"></i>
+                </span>
+                <input
+                  type="password"
+                  className="form-control"
+                  id="password"
+                  placeholder="Enter your password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </div>
+            </div>
+            <div className="row d-flex flex-row align-item-center ">
+              <div className="col-sm-12">
+                <button
+                  type="submit"
+                  className="btn btn-primary w-100 "
+                  onClick={signinHandler}
+                >
+                  Sign In
+                </button>
+              </div>
+              <div className="col-sm-8 d-flex flex-row justify-content-end mt-3   ">
+                <h6>Don't have an account !</h6>
+              </div>
+              <div
+                className="col-sm-4 text-primary d-flex flex-row justify-content-start  mt-3 "
+                style={{ cursor: "pointer" }}
+              >
+                <h6 onClick={navSignUp}>SignUp</h6>
+              </div>
+              <div className="col-sm-12 d-flex justify-content-center mt-2 w-100">
+                <GoogleLogin
+                  clientId="764710845627-qo1r0ojmaoo967a7i7638ja2qsg8sjvt.apps.googleusercontent.com"
+                  buttonText="Sign in with Google"
+                  onSuccess={responseGoogle}
+                  onFailure={responseGoogle}
+                  cookiePolicy={"single_host_origin"}
+                />
+              </div>
+              <div
+                className="col-sm-12 text-primary d-flex flex-row justify-content-center  mt-3 "
+                style={{ cursor: "pointer" }}
+              >
+                <h6 onClick={navforgot}>Forget Password?</h6>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
-      <form className="formx">
-        <div className="mb-3">
-          <h2>Sign In </h2>
-          <label htmlFor="email " className="form-label">
-            Email address
-          </label>
-          <div className="input-group mb-3 ">
-            <span className="input-group-text">
-              <i className="bi bi-envelope"></i>
-            </span>
-            <input
-              type="email"
-              className={`form-control ${emailError ? "is-invalid" : ""}`}
-              id="email"
-              placeholder="Enter your email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            {emailError && <div className="invalid-feedback">{emailError}</div>}
-          </div>
-        </div>
-        <div className="mb-3">
-          <label htmlFor="password" className="form-label">
-            Password
-          </label>
-          <div className="input-group mb-3">
-            <span className="input-group-text">
-              <i className="bi bi-person-lock"></i>
-            </span>
-            <input
-              type="password"
-              className="form-control"
-              id="password"
-              placeholder="Enter your password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
-        </div>
-        <div className="row d-flex flex-row align-item-center ">
-          <div className="col-sm-12">
-            <button
-              type="submit"
-              className="btn btn-primary w-100 "
-              onClick={signinHandler}
-            >
-              Sign In
-            </button>
-          </div>
-          <div className="col-sm-8 d-flex flex-row justify-content-end mt-3   ">
-            <h6>Don't have an account !</h6>
-          </div>
-          <div
-            className="col-sm-4 text-primary d-flex flex-row justify-content-start  mt-3 "
-            style={{ cursor: "pointer" }}
-          >
-            <h6 onClick={navSignUp}>SignUp</h6>
-          </div>
-          <div className="col-sm-12 d-flex justify-content-center mt-2 ">
-            <GoogleLogin
-              clientId="764710845627-qo1r0ojmaoo967a7i7638ja2qsg8sjvt.apps.googleusercontent.com"
-              buttonText="Sign in with Google"
-              onSuccess={responseGoogle}
-              onFailure={responseGoogle}
-              cookiePolicy={"single_host_origin"}
-            />
-          </div>
-          <div
-            className="col-sm-12 text-primary d-flex flex-row justify-content-center  mt-3 "
-            style={{ cursor: "pointer" }}
-          >
-            <h6 onClick={navforgot}>Forget Password?</h6>
-          </div>
-        </div>
-      </form>
     </div>
   );
 }

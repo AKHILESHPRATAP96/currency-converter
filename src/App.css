@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  
+  
 
 }
 
@@ -10,15 +12,16 @@
   justify-content:space-around;
   align-items: center;
   height: 100vh;
+ 
 }
 
 .formx {
   background-color: #ffffff;
   padding: 20px;
-  border-radius: 8px;
+  border-radius: 10px;
   box-shadow: 0 0 100px rgba(6, 38, 101, 0.875), 0 0 20px rgba(255, 255, 255, 0.2), 0 0 30px rgba(255, 255, 255, 0.2);
-  max-width: 400px;
-  width: 100%;
+  max-width:100%;
+  
 }
 
 .form-label {
@@ -61,7 +64,9 @@ span{
   flex-direction:column;
   justify-content:center;
   align-items: center;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2), 0 0 20px rgba(255, 255, 255, 0.2), 0 0 30px rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 1px rgba(255, 255, 255, 0.2), 0 0 20px rgba(255, 255, 255, 0.2), 0 0 30px rgba(255, 255, 255, 0.2);
+  max-width: 100%;
+  border-radius: 40px;
 
 }
 .heading h1 {
@@ -82,4 +87,19 @@ border-radius: 10px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
 border-radius: 10px;
   
+}
+@media (max-width: 576px) {
+  /* Styles for screens smaller than 576px (e.g., mobile) */
+  .formBack {
+    flex-direction: column;
+  
+  }
+
+  .heading h1 {
+    font-size: 24px;
+  }
+
+  .heading p {
+    font-size: 14px;
+  }
 }
