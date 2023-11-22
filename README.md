@@ -22,7 +22,8 @@
 <p>Bootstrap Icons: ^1.11.1</p>
 <p>@react-oauth/google: ^0.12.1</p>
 <p>jwt-decode: ^4.0.0</p>
-<p>Folder_Structure</p>
+
+<h3>Folder_Structure</h3>
 
 currency-converter/
 |-- src/
@@ -33,7 +34,7 @@ currency-converter/
 | | | |-- ForgotPassword.js
 | | | |-- authPage/
 | | |-- CurrencyConverter/
-| | |-- ConverterForm.js
+| | | |-- ConverterForm.js
 | |-- App.js
 | |-- index.js
 |-- public/
