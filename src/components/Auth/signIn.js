@@ -16,6 +16,12 @@ function SignInForm({ onSuccess }) {
     e.preventDefault();
     let auth = JSON.parse(localStorage.getItem("users"));
 
+    if (!auth) {
+      alert("Please signUp first");
+      console.log(auth);
+      return;
+    }
+
     if (auth[email]) {
       let userPassword = auth[email].password;
       if (userPassword === password) {
@@ -24,8 +30,8 @@ function SignInForm({ onSuccess }) {
       } else {
         alert("Invalid password. Please try again.");
       }
-    } else if (email == "" || password == "") {
-      alert("fields are empty");
+    } else if (email === "" || password === "") {
+      alert("Fields are empty");
     } else {
       alert("User with this email does not exist.");
     }
@@ -33,6 +39,14 @@ function SignInForm({ onSuccess }) {
 
   return (
     <div className="formBack">
+      <div className="heading">
+        <h1>currency</h1>
+        <h1>converter</h1>
+        <p>
+          Seamlessly Convert Currencies, Empowering Your Finances Across the
+          Globe.
+        </p>
+      </div>
       <form className="formx">
         <div className="mb-3">
           <h2>Sign In </h2>

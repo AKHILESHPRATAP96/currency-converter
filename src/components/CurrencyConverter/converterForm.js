@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../../components/CurrencyConverter/currencyconverter.css";
+import { useNavigate } from "react-router-dom";
 
 function ConverterForm() {
   let [data, setdata] = useState(null);
@@ -8,6 +9,14 @@ function ConverterForm() {
   const [inputAmount, setInputAmount] = useState("");
   const [convertedAmount, setConvertedAmount] = useState("converted amout");
   const [Date, setDate] = useState("updating Date");
+  const [isSignIn, setisSignIn] = useState(true);
+  let navigate = useNavigate();
+
+  function handlesignInsuccess() {
+    setisSignIn(false);
+    alert("successfully loggedOut");
+    navigate("/");
+  }
 
   async function fetche() {
     try {
@@ -44,6 +53,9 @@ function ConverterForm() {
 
   return (
     <div className="cont">
+      <button onClick={handlesignInsuccess} className=" logout ">
+        <i class="bi bi-box-arrow-right me-2"></i>logout
+      </button>
       <div className="converter-container ">
         <h1 style={{ color: "white" }}>CURRENCY CONVERTER</h1>
         <h4 className="fst-italic mt-5  mb-5 " style={{ color: "white" }}>

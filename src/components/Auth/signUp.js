@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 function SignUpForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const nav = useNavigate();
 
   function signupHandler(e) {
     e.preventDefault();
@@ -11,17 +13,26 @@ function SignUpForm() {
 
     if (auth[email]) {
       alert("Account already exists");
-    } else if (email == "" || password == "") {
+    } else if (email === "" || password === "") {
       alert("Please fill all fields");
     } else {
       auth[email] = { email, password };
       localStorage.setItem("users", JSON.stringify(auth));
       alert("Sign Up Successful");
+      nav("/");
     }
   }
 
   return (
     <div className="formBack">
+      <div className="heading">
+        <h1>currency</h1>
+        <h1>converter</h1>
+        <p>
+          Seamlessly Convert Currencies, Empowering Your Finances Across the
+          Globe.
+        </p>
+      </div>
       <form className="formx">
         <div className="mb-3">
           <h2>Sign Up </h2>
@@ -60,13 +71,46 @@ function SignUpForm() {
             />
           </div>
         </div>
-        <button
-          type="submit"
-          className="btn btn-primary w-100 "
-          onClick={signupHandler}
-        >
-          Sign Up
-        </button>
+
+        {/* ** */}
+        <div className="row d-flex flex-row align-item-center ">
+          <div className="col-sm-12">
+            <button
+              type="submit"
+              className="btn btn-primary w-100 "
+              onClick={signupHandler}
+            >
+              Sign Up
+            </button>
+          </div>
+          <div className="col-sm-8 d-flex flex-row justify-content-end mt-3   ">
+            <h6>have an account</h6>
+          </div>
+          <div
+            className="col-sm-4 text-primary d-flex flex-row justify-content-start  mt-3 "
+            style={{ cursor: "pointer" }}
+          >
+            <h6
+              onClick={() => {
+                nav("/");
+              }}
+            >
+              sign in
+            </h6>
+          </div>
+          <div
+            className="col-sm-12 text-primary d-flex flex-row justify-content-center  mt-3 "
+            style={{ cursor: "pointer" }}
+          >
+            <h6
+              onClick={() => {
+                nav("/forgot");
+              }}
+            >
+              Forget Password?
+            </h6>
+          </div>
+        </div>
       </form>
     </div>
   );

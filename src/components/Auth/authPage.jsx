@@ -1,9 +1,9 @@
 import React from 'react'
 import SignInForm from './signIn'
-import SignUpForm from './signUp'
-import ForgotPasswordForm from './fogotPassword'
+
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
+
 
 function Authentication() {
     const [isSignIn, setisSignIn] = useState(false)
@@ -19,9 +19,9 @@ function Authentication() {
 
     return (
         <div>
+
             <SignInForm onSuccess={handlesignInsuccess} />
-            <SignUpForm />
-            <ForgotPasswordForm />
+
         </div>
     )
 }

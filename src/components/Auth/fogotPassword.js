@@ -28,6 +28,14 @@ function ForgotPasswordForm() {
 
   return (
     <div className="formBack">
+      <div className="heading">
+        <h1>currency</h1>
+        <h1>converter</h1>
+        <p>
+          Seamlessly Convert Currencies, Empowering Your Finances Across the
+          Globe.
+        </p>
+      </div>
       <form className="formx">
         <div className="mb-3">
           <h2>Reset Password </h2>
@@ -66,13 +74,46 @@ function ForgotPasswordForm() {
             />
           </div>
         </div>
-        <button
-          type="submit"
-          className="btn btn-primary w-100 "
-          onClick={resetPasswordHandler}
-        >
-          Reset Password
-        </button>
+
+        {/* ** */}
+        <div className="row d-flex flex-row align-item-center ">
+          <div className="col-sm-12">
+            <button
+              type="submit"
+              className="btn btn-primary w-100 "
+              onClick={resetPasswordHandler}
+            >
+              Reset Password
+            </button>
+          </div>
+          <div className="col-sm-7 d-flex flex-row justify-content-end mt-3   ">
+            <h6>Or go back to</h6>
+          </div>
+          <div
+            className="col-sm-2 text-primary d-flex flex-row justify-content-end  mt-3 "
+            style={{ cursor: "pointer" }}
+          >
+            <h6
+              onClick={() => {
+                nav("/");
+              }}
+            >
+              signIn
+            </h6>
+          </div>
+          <div
+            className="col-sm-2 text-primary d-flex flex-row justify-content-center  mt-3 "
+            style={{ cursor: "pointer" }}
+          >
+            <h6
+              onClick={() => {
+                nav("/signup");
+              }}
+            >
+              signUp
+            </h6>
+          </div>
+        </div>
       </form>
     </div>
   );
