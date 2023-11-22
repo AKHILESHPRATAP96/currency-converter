@@ -1,10 +1,32 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { GoogleLogin } from "@react-oauth/google";
+import { jwtDecode } from "jwt-decode";
 
 function SignInForm({ onSuccess }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
+
+  const responseGoogle = (response) => {
+    if (response.credential) {
+      setTimeout(() => {
+        navigate("/convert");
+      }, 1500);
+
+      // Extract relevant information from the response
+      const { email, givenName, familyName } = jwtDecode(response.credential);
+
+      // Use this information as needed, for example, send it to the server
+      console.log("Email:", email);
+      console.log("Given Name:", givenName);
+      console.log("Family Name:", familyName);
+
+      // Handle user data (e.g., send it to the server, store it in the state)
+    } else {
+      console.log("Google Sign-In failed:", response);
+    }
+  };
 
   let navigate = useNavigate();
   function navSignUp() {
@@ -67,9 +89,9 @@ function SignInForm({ onSuccess }) {
           <label htmlFor="email " className="form-label">
             Email address
           </label>
-          <div class="input-group mb-3 ">
-            <span class="input-group-text">
-              <i class="bi bi-envelope"></i>
+          <div className="input-group mb-3 ">
+            <span className="input-group-text">
+              <i className="bi bi-envelope"></i>
             </span>
             <input
               type="email"
@@ -86,9 +108,9 @@ function SignInForm({ onSuccess }) {
           <label htmlFor="password" className="form-label">
             Password
           </label>
-          <div class="input-group mb-3">
-            <span class="input-group-text">
-              <i class="bi bi-person-lock"></i>
+          <div className="input-group mb-3">
+            <span className="input-group-text">
+              <i className="bi bi-person-lock"></i>
             </span>
             <input
               type="password"
@@ -118,6 +140,15 @@ function SignInForm({ onSuccess }) {
             style={{ cursor: "pointer" }}
           >
             <h6 onClick={navSignUp}>SignUp</h6>
+          </div>
+          <div className="col-sm-12 d-flex justify-content-center mt-2 ">
+            <GoogleLogin
+              clientId="764710845627-qo1r0ojmaoo967a7i7638ja2qsg8sjvt.apps.googleusercontent.com"
+              buttonText="Sign in with Google"
+              onSuccess={responseGoogle}
+              onFailure={responseGoogle}
+              cookiePolicy={"single_host_origin"}
+            />
           </div>
           <div
             className="col-sm-12 text-primary d-flex flex-row justify-content-center  mt-3 "
