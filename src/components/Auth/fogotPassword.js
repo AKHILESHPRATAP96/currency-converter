@@ -35,7 +35,7 @@ function ForgotPasswordForm() {
       localStorage.setItem("users", JSON.stringify(users));
       alert("Password reset successfully!");
       nav("/");
-    } else if (newPassword == "" || email == "") {
+    } else if (newPassword === "" || email === "") {
       alert("Please fill all fields");
     } else {
       alert("User with this email does not exist.");

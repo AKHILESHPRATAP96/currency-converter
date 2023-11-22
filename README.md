@@ -32,4 +32,5 @@ currency-converter/
 
 Usage
 Start the development server:
+npm i
 npm start
