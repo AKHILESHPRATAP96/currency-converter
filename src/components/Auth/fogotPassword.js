@@ -4,13 +4,29 @@ import { useNavigate } from "react-router-dom";
 function ForgotPasswordForm() {
   const [email, setEmail] = useState("");
   const [newPassword, setNewPassword] = useState("");
+  const [emailError, setEmailError] = useState("");
   let nav = useNavigate();
+
+  function validateEmailFormat(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
 
   function resetPasswordHandler(e) {
     e.preventDefault();
+    setEmailError("");
+
+    if (!validateEmailFormat(email)) {
+      setEmailError("Please enter a valid email address.");
+      return;
+    }
+
+    if (newPassword === "") {
+      alert("password can't be empty");
+      return;
+    }
     // Retrieve existing users from local storage
     const users = JSON.parse(localStorage.getItem("users")) || {};
-
     // Check if the user with the entered email exists
     if (users[email]) {
       // Update the password for the user in local storage
@@ -48,12 +64,13 @@ function ForgotPasswordForm() {
             </span>
             <input
               type="email"
-              className="form-control"
+              className={`form-control ${emailError ? "is-invalid" : ""}`}
               id="email"
               placeholder="Enter your email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
+            {emailError && <div className="invalid-feedback">{emailError}</div>}
           </div>
         </div>
         <div className="mb-3">
@@ -87,7 +104,9 @@ function ForgotPasswordForm() {
             </button>
           </div>
           <div className="col-sm-7 d-flex flex-row justify-content-end mt-3   ">
-            <h6>Or go back to</h6>
+            <h6>
+              <i class="bi bi-arrow-left"></i> Or go back to
+            </h6>
           </div>
           <div
             className="col-sm-2 text-primary d-flex flex-row justify-content-end  mt-3 "
@@ -98,7 +117,7 @@ function ForgotPasswordForm() {
                 nav("/");
               }}
             >
-              signIn
+              SignIn
             </h6>
           </div>
           <div
@@ -110,7 +129,7 @@ function ForgotPasswordForm() {
                 nav("/signup");
               }}
             >
-              signUp
+              SignUp
             </h6>
           </div>
         </div>

@@ -3,11 +3,25 @@ import { useNavigate } from "react-router-dom";
 function SignUpForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [emailError, setEmailError] = useState("");
 
   const nav = useNavigate();
 
+  function validateEmailFormat(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
+
   function signupHandler(e) {
     e.preventDefault();
+
+    setEmailError("");
+
+    if (!validateEmailFormat(email)) {
+      setEmailError("Please enter a valid email address.");
+      return;
+    }
+
     let auth = JSON.parse(localStorage.getItem("users")) || {};
     console.log(auth);
 
@@ -45,12 +59,13 @@ function SignUpForm() {
             </span>
             <input
               type="email"
-              className="form-control"
+              className={`form-control ${emailError ? "is-invalid" : ""}`}
               id="email"
               placeholder="Enter your email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
+            {emailError && <div className="invalid-feedback">{emailError}</div>}
           </div>
         </div>
         <div className="mb-3">
@@ -84,7 +99,7 @@ function SignUpForm() {
             </button>
           </div>
           <div className="col-sm-8 d-flex flex-row justify-content-end mt-3   ">
-            <h6>have an account</h6>
+            <h6>Have an account !</h6>
           </div>
           <div
             className="col-sm-4 text-primary d-flex flex-row justify-content-start  mt-3 "
@@ -95,7 +110,7 @@ function SignUpForm() {
                 nav("/");
               }}
             >
-              sign in
+              SignIn
             </h6>
           </div>
           <div
