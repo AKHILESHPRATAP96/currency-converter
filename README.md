@@ -26,19 +26,19 @@
 <h3>Folder_Structure</h3>
 
 currency-converter/
-|-- src/
-| |-- components/
-| | |-- Auth/
-| | | |-- SignUp.js
-| | | |-- SignIn.js
-| | | |-- ForgotPassword.js
-| | | |-- authPage/
-| | |-- CurrencyConverter/
-| | | |-- ConverterForm.js
-| |-- App.js
-| |-- index.js
-|-- public/
-|-- package.json
+src/
+components/
+Auth/
+SignUp.js
+SignIn.js
+ForgotPassword.js
+authPage/
+CurrencyConverter/
+ConverterForm.js
+App.js
+index.js
+public/
+package.js
 
 Usage
 Start the development server:
