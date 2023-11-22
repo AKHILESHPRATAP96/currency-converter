@@ -1,5 +1,5 @@
 <h1>Currency Converter App</h1>
-<img width="512" alt="image" src="https://akhileshpratap96.github.io/images_currency/signin.png">
+<img  alt="image" src="https://akhileshpratap96.github.io/images_currency/signin.png">
 <p>Welcome to the Currency Converter app! This application allows users to convert currencies, sign in, sign up, reset their passwords, and sign up using their Google accounts.</p>
 
 <h2>Features</h2>
